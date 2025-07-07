@@ -1,0 +1,138 @@
+{
+    "equipos": [
+        {
+            "nombre_equipo": "Los Semanticos",
+            "identidad_equipo": "https://i.ibb.co/7xgHnbH7/semanticoslogov2.jpg",
+            "link": "https://github.com/ghandefuse/TPI_LosSemanticos",
+            "asignatura": "Sintaxis y Semantica de los Lenguajes",
+            "carrera": "Ingenieria en Siestemas de Informacion",
+            "universidad_regional": "Universidad Tecnológica Nacional- Facultad Regional Resistencia",
+            "direccion": {
+                "calle": "French 414",
+                "ciudad": "Resistencia",
+                "pais": "Argentina"
+            },
+            "alianza_equipo": "Desde la primera reunion del equipo, se establecio como objetivo comun adquirir y consolidar el conocimiento de la asignatura a traves del desarrollo colaborativo de este trabajo practico. Para ello, se identificaron las habilidades, disponibilidades horarias y niveles de compromiso de cada integrante, asegurando una distribución eficiente de responsabilidades dentro del grupo.",
+            "integrantes": [
+                {
+                    "nombre": "Kowtun, Andrea Carolina",
+                    "edad": 27,
+                    "cargo": "Programadora",
+                    "foto": "https://ibb.co/4nNzvtsp",
+                    "email": "andreakowtun@gmail.com",
+                    "habilidades": "Ingles, Documentacion",
+                    "salario": 15000,
+                    "activo": true
+                },
+                {
+                    "nombre": "Fliegler, Franco Emanuel",
+                    "edad": 22,
+                    "cargo": "Lider, Programador",
+                    "foto": "https://ibb.co/1YW6Mw3P",
+                    "email": "francofliegler@gmail.com",
+                    "habilidades": "Ingles, Documentacion, Produccion de video",
+                    "salario": 10000,
+                    "activo": true
+                },
+                {
+                    "nombre": "Escobar, Ramiro Gabriel.",
+                    "edad": 22,
+                    "cargo": "Programador",
+                    "foto": "https://ibb.co/1YLTNvNf",
+                    "email": "ramiroescobare.24@gmail.com",
+                    "habilidades": "Resolucion de problemas, Ingles",
+                    "salario": 10000,
+                    "activo": true
+                },
+                {
+                    "nombre": "Gomez, Ricardo Enrique.",
+                    "edad": 27,
+                    "cargo": "Programador",
+                    "foto": "https://ibb.co/HLMTdpp9",
+                    "email": "ricardoenriquegomez.utn@gmail.com",
+                    "habilidades": "Documentacion, Produccion de video, Innovacion, Comunicacion",
+                    "salario": 10000,
+                    "activo": true
+                },
+                {
+                    "nombre": "Chima, Luis Alberto.",
+                    "edad": 27,
+                    "cargo": "Programador",
+                    "foto": "https://ibb.co/m5HDnTMS",
+                    "email": "chimaluisalberto@gmail.com",
+                    "habilidades": "Ingles, Documentacion",
+                    "salario": 10000,
+                    "activo": true
+                }
+            ],
+            "proyectos": [
+                {
+                    "nombre": "Diseño e implementacion de Lexer y Parser",
+                    "estado": "Done",
+                    "resumen": "El proyecto valida la estructura del archivo JSON e identifica errores.",
+                    "tareas": [
+                        {
+                            "nombre": "Conformacion de equipo (matriz, identidad, alianza).",
+                            "estado": "Done",
+                            "resumen": "Se establecieron objetivos y formas de trabajo",
+                            "fecha_inicio": "2024-04-02",
+                            "fecha_fin": "2024-04-13"
+                        },
+                        {
+                            "nombre": "Primera documentacion del proyecto; gramatica a generar.",
+                            "estado": "Done",
+                            "resumen": "Se establecio la gramatica a generar y los Tokens a analizar",
+                            "fecha_inicio": "2024-05-18",
+                            "fecha_fin": "2024-05-04"
+                        },
+                        {
+                            "nombre": "Presentacion del lexer o scanner que reconozca los tokens del lenguaje.",
+                            "estado": "Done",
+                            "resumen": "Se implementó un lexer en Python utilizando la libreria PLY. El analizador identifica correctamente los tokens esenciales del lenguaje JSON, como llaves, corchetes, cadenas, numeros y separadores. Se realizaron pruebas para validar su funcionamiento.",
+                            "fecha_inicio": "2024-05-10",
+                            "fecha_fin": "2024-06-08"
+                        },
+                        {
+                            "nombre": "Presentación de trabajo completo. Lexer y parser",
+                            "estado": "Done",
+                            "resumen": "Se desarrollaron e integraron los analizadores lexico y sintactico utilizando Python y PLY. El lexer reconoce correctamente los tokens fundamentales del lenguaje JSON, mientras que el parser valida la estructura jerarquica del documento.",
+                            "fecha_inicio": "2024-06-10",
+                            "fecha_fin": "2024-07-06"
+                        }
+                    ],
+                    "fecha_inicio": "2024-04-01",
+                    "fecha_fin": "2024-07-06",
+                    "video": "https://www.youtube.com/watch?v=0TcPrbahz9A",
+                    "conclusion": "En efecto, se cumplio el objetivo"
+                },
+                {
+                    "nombre": "Desarrollo de documentación tecnica y presentación final",
+                    "estado": "In Progress",
+                    "resumen": "El proyecto tiene como objetivo elaborar toda la documentación final del trabajo practico, incluyendo memoria tecnica, presentacion de resultados y evaluacion del proceso grupal.",
+                    "tareas": [
+                        {
+                            "nombre": "Redaccion de memoria técnica",
+                            "estado": "In progress",
+                            "resumen": "Se esta redactando el documento final con detalle del diseño, desarrollo e implementación del lexer y parser.",
+                            "fecha_inicio": "2024-06-25",
+                            "fecha_fin": "2024-07-10"
+                        },
+                        {
+                            "nombre": "Preparacion de la presentación oral",
+                            "estado": "On hold",
+                            "resumen": "Se elaborara una presentacion con soporte visual para exponer ante la catedra.",
+                            "fecha_inicio": "2024-07-01",
+                            "fecha_fin": "2024-07-12"
+                        }
+                    ],
+                    "fecha_inicio": "2024-06-25",
+                    "fecha_fin": "2024-07-12",
+                    "video": "https://www.youtube.com/watch?v=0TcPrbahz9A",
+                    "conclusion": "Ni idea jaja salu2"
+                }
+            ]
+        }
+    ],
+    "version": "1.0",
+    "firma_digital": "todo_es_posible<3"
+}

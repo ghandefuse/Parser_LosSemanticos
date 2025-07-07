@@ -1,0 +1,2526 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> json
+Rule 1     json -> LLAVE_ABRE contenido_json LLAVE_CIERRA
+Rule 2     contenido_json -> equipos
+Rule 3     contenido_json -> equipos COMA version
+Rule 4     contenido_json -> equipos COMA firma_digital
+Rule 5     contenido_json -> equipos COMA version COMA firma_digital
+Rule 6     contenido_json -> equipos COMA firma_digital COMA version
+Rule 7     contenido_json -> version COMA equipos
+Rule 8     contenido_json -> version COMA equipos COMA firma_digital
+Rule 9     contenido_json -> firma_digital COMA equipos
+Rule 10    contenido_json -> firma_digital COMA equipos COMA version
+Rule 11    contenido_json -> version COMA firma_digital COMA equipos
+Rule 12    contenido_json -> firma_digital COMA version COMA equipos
+Rule 13    equipos -> EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA
+Rule 14    lista_equipos -> equipo
+Rule 15    lista_equipos -> lista_equipos COMA equipo
+Rule 16    equipo -> LLAVE_ABRE campos_equipo LLAVE_CIERRA
+Rule 17    campos_equipo -> campo_equipo
+Rule 18    campos_equipo -> campos_equipo COMA campo_equipo
+Rule 19    campo_equipo -> NOMBRE_EQUIPO DOS_PUNTOS valor_simple
+Rule 20    campo_equipo -> IDENTIDAD_EQUIPO DOS_PUNTOS valor_simple
+Rule 21    campo_equipo -> CARRERA DOS_PUNTOS valor_simple
+Rule 22    campo_equipo -> ASIGNATURA DOS_PUNTOS valor_simple
+Rule 23    campo_equipo -> UNIVERSIDAD_REGIONAL DOS_PUNTOS valor_simple
+Rule 24    campo_equipo -> ALIANZA_EQUIPO DOS_PUNTOS valor_simple
+Rule 25    campo_equipo -> A_STRING DOS_PUNTOS valor_simple
+Rule 26    campo_equipo -> DIRECCION DOS_PUNTOS LLAVE_ABRE campos_direccion LLAVE_CIERRA
+Rule 27    campo_equipo -> INTEGRANTES DOS_PUNTOS CORCHETE_ABRE lista_integrantes CORCHETE_CIERRA
+Rule 28    campo_equipo -> PROYECTOS DOS_PUNTOS CORCHETE_ABRE lista_proyectos CORCHETE_CIERRA
+Rule 29    valor_simple -> A_STRING
+Rule 30    valor_simple -> LINK
+Rule 31    valor_simple -> EMAIL
+Rule 32    valor_simple -> NUMBER
+Rule 33    valor_simple -> TRUE
+Rule 34    valor_simple -> FALSE
+Rule 35    valor_simple -> NULL
+Rule 36    valor_simple -> DATE
+Rule 37    campos_direccion -> campo_direccion
+Rule 38    campos_direccion -> campos_direccion COMA campo_direccion
+Rule 39    campo_direccion -> CALLE DOS_PUNTOS valor_simple
+Rule 40    campo_direccion -> CIUDAD DOS_PUNTOS valor_simple
+Rule 41    campo_direccion -> PAIS DOS_PUNTOS valor_simple
+Rule 42    lista_integrantes -> integrante
+Rule 43    lista_integrantes -> lista_integrantes COMA integrante
+Rule 44    integrante -> LLAVE_ABRE campos_integrante LLAVE_CIERRA
+Rule 45    campos_integrante -> campo_integrante
+Rule 46    campos_integrante -> campos_integrante COMA campo_integrante
+Rule 47    campo_integrante -> NOMBRE DOS_PUNTOS valor_simple
+Rule 48    campo_integrante -> EDAD DOS_PUNTOS valor_simple
+Rule 49    campo_integrante -> CARGO DOS_PUNTOS valor_simple
+Rule 50    campo_integrante -> FOTO DOS_PUNTOS valor_simple
+Rule 51    campo_integrante -> EMAIL DOS_PUNTOS campo_email
+Rule 52    campo_integrante -> HABILIDADES DOS_PUNTOS valor_simple
+Rule 53    campo_integrante -> SALARIO DOS_PUNTOS valor_simple
+Rule 54    campo_integrante -> ACTIVO DOS_PUNTOS valor_simple
+Rule 55    campo_integrante -> A_STRING DOS_PUNTOS valor_simple
+Rule 56    campo_email -> EMAIL DOS_PUNTOS A_STRING
+Rule 57    lista_proyectos -> proyecto
+Rule 58    lista_proyectos -> lista_proyectos COMA proyecto
+Rule 59    proyecto -> LLAVE_ABRE campos_proyecto LLAVE_CIERRA
+Rule 60    campos_proyecto -> campo_proyecto
+Rule 61    campos_proyecto -> campos_proyecto COMA campo_proyecto
+Rule 62    campo_proyecto -> NOMBRE DOS_PUNTOS valor_simple
+Rule 63    campo_proyecto -> ESTADO DOS_PUNTOS valor_simple
+Rule 64    campo_proyecto -> RESUMEN DOS_PUNTOS valor_simple
+Rule 65    campo_proyecto -> FECHA_INICIO DOS_PUNTOS valor_simple
+Rule 66    campo_proyecto -> FECHA_FIN DOS_PUNTOS valor_simple
+Rule 67    campo_proyecto -> VIDEO DOS_PUNTOS valor_simple
+Rule 68    campo_proyecto -> CONCLUSION DOS_PUNTOS valor_simple
+Rule 69    campo_proyecto -> A_STRING DOS_PUNTOS valor_simple
+Rule 70    campo_proyecto -> TAREAS DOS_PUNTOS CORCHETE_ABRE lista_tareas CORCHETE_CIERRA
+Rule 71    lista_tareas -> tarea
+Rule 72    lista_tareas -> lista_tareas COMA tarea
+Rule 73    tarea -> LLAVE_ABRE campos_tarea LLAVE_CIERRA
+Rule 74    campos_tarea -> campo_tarea
+Rule 75    campos_tarea -> campos_tarea COMA campo_tarea
+Rule 76    campo_tarea -> NOMBRE DOS_PUNTOS valor_simple
+Rule 77    campo_tarea -> ESTADO DOS_PUNTOS valor_simple
+Rule 78    campo_tarea -> RESUMEN DOS_PUNTOS valor_simple
+Rule 79    campo_tarea -> FECHA_INICIO DOS_PUNTOS valor_simple
+Rule 80    campo_tarea -> FECHA_FIN DOS_PUNTOS valor_simple
+Rule 81    campo_tarea -> A_STRING DOS_PUNTOS valor_simple
+Rule 82    version -> VERSION DOS_PUNTOS valor_simple
+Rule 83    firma_digital -> FIRMA_DIGITAL DOS_PUNTOS valor_simple
+
+Terminals, with rules where they appear
+
+ACTIVO               : 54
+ALIANZA_EQUIPO       : 24
+ASIGNATURA           : 22
+A_STRING             : 25 29 55 56 69 81
+CALLE                : 39
+CARGO                : 49
+CARRERA              : 21
+CIUDAD               : 40
+COMA                 : 3 4 5 5 6 6 7 8 8 9 10 10 11 11 12 12 15 18 38 43 46 58 61 72 75
+CONCLUSION           : 68
+CORCHETE_ABRE        : 13 27 28 70
+CORCHETE_CIERRA      : 13 27 28 70
+DATE                 : 36
+DIRECCION            : 26
+DOS_PUNTOS           : 13 19 20 21 22 23 24 25 26 27 28 39 40 41 47 48 49 50 51 52 53 54 55 56 62 63 64 65 66 67 68 69 70 76 77 78 79 80 81 82 83
+EDAD                 : 48
+EMAIL                : 31 51 56
+EQUIPOS              : 13
+ESTADO               : 63 77
+FALSE                : 34
+FECHA_FIN            : 66 80
+FECHA_INICIO         : 65 79
+FIRMA_DIGITAL        : 83
+FOTO                 : 50
+HABILIDADES          : 52
+IDENTIDAD_EQUIPO     : 20
+INTEGRANTES          : 27
+LINK                 : 30
+LLAVE_ABRE           : 1 16 26 44 59 73
+LLAVE_CIERRA         : 1 16 26 44 59 73
+NOMBRE               : 47 62 76
+NOMBRE_EQUIPO        : 19
+NULL                 : 35
+NUMBER               : 32
+PAIS                 : 41
+PROYECTOS            : 28
+RESUMEN              : 64 78
+SALARIO              : 53
+TAREAS               : 70
+TRUE                 : 33
+UNIVERSIDAD_REGIONAL : 23
+VERSION              : 82
+VIDEO                : 67
+error                : 
+
+Nonterminals, with rules where they appear
+
+campo_direccion      : 37 38
+campo_email          : 51
+campo_equipo         : 17 18
+campo_integrante     : 45 46
+campo_proyecto       : 60 61
+campo_tarea          : 74 75
+campos_direccion     : 26 38
+campos_equipo        : 16 18
+campos_integrante    : 44 46
+campos_proyecto      : 59 61
+campos_tarea         : 73 75
+contenido_json       : 1
+equipo               : 14 15
+equipos              : 2 3 4 5 6 7 8 9 10 11 12
+firma_digital        : 4 5 6 8 9 10 11 12
+integrante           : 42 43
+json                 : 0
+lista_equipos        : 13 15
+lista_integrantes    : 27 43
+lista_proyectos      : 28 58
+lista_tareas         : 70 72
+proyecto             : 57 58
+tarea                : 71 72
+valor_simple         : 19 20 21 22 23 24 25 39 40 41 47 48 49 50 52 53 54 55 62 63 64 65 66 67 68 69 76 77 78 79 80 81 82 83
+version              : 3 5 6 7 8 10 11 12
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . json
+    (1) json -> . LLAVE_ABRE contenido_json LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 2
+
+    json                           shift and go to state 1
+
+state 1
+
+    (0) S' -> json .
+
+
+
+state 2
+
+    (1) json -> LLAVE_ABRE . contenido_json LLAVE_CIERRA
+    (2) contenido_json -> . equipos
+    (3) contenido_json -> . equipos COMA version
+    (4) contenido_json -> . equipos COMA firma_digital
+    (5) contenido_json -> . equipos COMA version COMA firma_digital
+    (6) contenido_json -> . equipos COMA firma_digital COMA version
+    (7) contenido_json -> . version COMA equipos
+    (8) contenido_json -> . version COMA equipos COMA firma_digital
+    (9) contenido_json -> . firma_digital COMA equipos
+    (10) contenido_json -> . firma_digital COMA equipos COMA version
+    (11) contenido_json -> . version COMA firma_digital COMA equipos
+    (12) contenido_json -> . firma_digital COMA version COMA equipos
+    (13) equipos -> . EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA
+    (82) version -> . VERSION DOS_PUNTOS valor_simple
+    (83) firma_digital -> . FIRMA_DIGITAL DOS_PUNTOS valor_simple
+
+    EQUIPOS         shift and go to state 7
+    VERSION         shift and go to state 8
+    FIRMA_DIGITAL   shift and go to state 9
+
+    contenido_json                 shift and go to state 3
+    equipos                        shift and go to state 4
+    version                        shift and go to state 5
+    firma_digital                  shift and go to state 6
+
+state 3
+
+    (1) json -> LLAVE_ABRE contenido_json . LLAVE_CIERRA
+
+    LLAVE_CIERRA    shift and go to state 10
+
+
+state 4
+
+    (2) contenido_json -> equipos .
+    (3) contenido_json -> equipos . COMA version
+    (4) contenido_json -> equipos . COMA firma_digital
+    (5) contenido_json -> equipos . COMA version COMA firma_digital
+    (6) contenido_json -> equipos . COMA firma_digital COMA version
+
+    LLAVE_CIERRA    reduce using rule 2 (contenido_json -> equipos .)
+    COMA            shift and go to state 11
+
+
+state 5
+
+    (7) contenido_json -> version . COMA equipos
+    (8) contenido_json -> version . COMA equipos COMA firma_digital
+    (11) contenido_json -> version . COMA firma_digital COMA equipos
+
+    COMA            shift and go to state 12
+
+
+state 6
+
+    (9) contenido_json -> firma_digital . COMA equipos
+    (10) contenido_json -> firma_digital . COMA equipos COMA version
+    (12) contenido_json -> firma_digital . COMA version COMA equipos
+
+    COMA            shift and go to state 13
+
+
+state 7
+
+    (13) equipos -> EQUIPOS . DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA
+
+    DOS_PUNTOS      shift and go to state 14
+
+
+state 8
+
+    (82) version -> VERSION . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 15
+
+
+state 9
+
+    (83) firma_digital -> FIRMA_DIGITAL . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 16
+
+
+state 10
+
+    (1) json -> LLAVE_ABRE contenido_json LLAVE_CIERRA .
+
+    $end            reduce using rule 1 (json -> LLAVE_ABRE contenido_json LLAVE_CIERRA .)
+
+
+state 11
+
+    (3) contenido_json -> equipos COMA . version
+    (4) contenido_json -> equipos COMA . firma_digital
+    (5) contenido_json -> equipos COMA . version COMA firma_digital
+    (6) contenido_json -> equipos COMA . firma_digital COMA version
+    (82) version -> . VERSION DOS_PUNTOS valor_simple
+    (83) firma_digital -> . FIRMA_DIGITAL DOS_PUNTOS valor_simple
+
+    VERSION         shift and go to state 8
+    FIRMA_DIGITAL   shift and go to state 9
+
+    version                        shift and go to state 17
+    firma_digital                  shift and go to state 18
+
+state 12
+
+    (7) contenido_json -> version COMA . equipos
+    (8) contenido_json -> version COMA . equipos COMA firma_digital
+    (11) contenido_json -> version COMA . firma_digital COMA equipos
+    (13) equipos -> . EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA
+    (83) firma_digital -> . FIRMA_DIGITAL DOS_PUNTOS valor_simple
+
+    EQUIPOS         shift and go to state 7
+    FIRMA_DIGITAL   shift and go to state 9
+
+    equipos                        shift and go to state 19
+    firma_digital                  shift and go to state 20
+
+state 13
+
+    (9) contenido_json -> firma_digital COMA . equipos
+    (10) contenido_json -> firma_digital COMA . equipos COMA version
+    (12) contenido_json -> firma_digital COMA . version COMA equipos
+    (13) equipos -> . EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA
+    (82) version -> . VERSION DOS_PUNTOS valor_simple
+
+    EQUIPOS         shift and go to state 7
+    VERSION         shift and go to state 8
+
+    equipos                        shift and go to state 21
+    version                        shift and go to state 22
+
+state 14
+
+    (13) equipos -> EQUIPOS DOS_PUNTOS . CORCHETE_ABRE lista_equipos CORCHETE_CIERRA
+
+    CORCHETE_ABRE   shift and go to state 23
+
+
+state 15
+
+    (82) version -> VERSION DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 24
+
+state 16
+
+    (83) firma_digital -> FIRMA_DIGITAL DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 33
+
+state 17
+
+    (3) contenido_json -> equipos COMA version .
+    (5) contenido_json -> equipos COMA version . COMA firma_digital
+
+    LLAVE_CIERRA    reduce using rule 3 (contenido_json -> equipos COMA version .)
+    COMA            shift and go to state 34
+
+
+state 18
+
+    (4) contenido_json -> equipos COMA firma_digital .
+    (6) contenido_json -> equipos COMA firma_digital . COMA version
+
+    LLAVE_CIERRA    reduce using rule 4 (contenido_json -> equipos COMA firma_digital .)
+    COMA            shift and go to state 35
+
+
+state 19
+
+    (7) contenido_json -> version COMA equipos .
+    (8) contenido_json -> version COMA equipos . COMA firma_digital
+
+    LLAVE_CIERRA    reduce using rule 7 (contenido_json -> version COMA equipos .)
+    COMA            shift and go to state 36
+
+
+state 20
+
+    (11) contenido_json -> version COMA firma_digital . COMA equipos
+
+    COMA            shift and go to state 37
+
+
+state 21
+
+    (9) contenido_json -> firma_digital COMA equipos .
+    (10) contenido_json -> firma_digital COMA equipos . COMA version
+
+    LLAVE_CIERRA    reduce using rule 9 (contenido_json -> firma_digital COMA equipos .)
+    COMA            shift and go to state 38
+
+
+state 22
+
+    (12) contenido_json -> firma_digital COMA version . COMA equipos
+
+    COMA            shift and go to state 39
+
+
+state 23
+
+    (13) equipos -> EQUIPOS DOS_PUNTOS CORCHETE_ABRE . lista_equipos CORCHETE_CIERRA
+    (14) lista_equipos -> . equipo
+    (15) lista_equipos -> . lista_equipos COMA equipo
+    (16) equipo -> . LLAVE_ABRE campos_equipo LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 42
+
+    lista_equipos                  shift and go to state 40
+    equipo                         shift and go to state 41
+
+state 24
+
+    (82) version -> VERSION DOS_PUNTOS valor_simple .
+
+    COMA            reduce using rule 82 (version -> VERSION DOS_PUNTOS valor_simple .)
+    LLAVE_CIERRA    reduce using rule 82 (version -> VERSION DOS_PUNTOS valor_simple .)
+
+
+state 25
+
+    (29) valor_simple -> A_STRING .
+
+    COMA            reduce using rule 29 (valor_simple -> A_STRING .)
+    LLAVE_CIERRA    reduce using rule 29 (valor_simple -> A_STRING .)
+
+
+state 26
+
+    (30) valor_simple -> LINK .
+
+    COMA            reduce using rule 30 (valor_simple -> LINK .)
+    LLAVE_CIERRA    reduce using rule 30 (valor_simple -> LINK .)
+
+
+state 27
+
+    (31) valor_simple -> EMAIL .
+
+    COMA            reduce using rule 31 (valor_simple -> EMAIL .)
+    LLAVE_CIERRA    reduce using rule 31 (valor_simple -> EMAIL .)
+
+
+state 28
+
+    (32) valor_simple -> NUMBER .
+
+    COMA            reduce using rule 32 (valor_simple -> NUMBER .)
+    LLAVE_CIERRA    reduce using rule 32 (valor_simple -> NUMBER .)
+
+
+state 29
+
+    (33) valor_simple -> TRUE .
+
+    COMA            reduce using rule 33 (valor_simple -> TRUE .)
+    LLAVE_CIERRA    reduce using rule 33 (valor_simple -> TRUE .)
+
+
+state 30
+
+    (34) valor_simple -> FALSE .
+
+    COMA            reduce using rule 34 (valor_simple -> FALSE .)
+    LLAVE_CIERRA    reduce using rule 34 (valor_simple -> FALSE .)
+
+
+state 31
+
+    (35) valor_simple -> NULL .
+
+    COMA            reduce using rule 35 (valor_simple -> NULL .)
+    LLAVE_CIERRA    reduce using rule 35 (valor_simple -> NULL .)
+
+
+state 32
+
+    (36) valor_simple -> DATE .
+
+    COMA            reduce using rule 36 (valor_simple -> DATE .)
+    LLAVE_CIERRA    reduce using rule 36 (valor_simple -> DATE .)
+
+
+state 33
+
+    (83) firma_digital -> FIRMA_DIGITAL DOS_PUNTOS valor_simple .
+
+    COMA            reduce using rule 83 (firma_digital -> FIRMA_DIGITAL DOS_PUNTOS valor_simple .)
+    LLAVE_CIERRA    reduce using rule 83 (firma_digital -> FIRMA_DIGITAL DOS_PUNTOS valor_simple .)
+
+
+state 34
+
+    (5) contenido_json -> equipos COMA version COMA . firma_digital
+    (83) firma_digital -> . FIRMA_DIGITAL DOS_PUNTOS valor_simple
+
+    FIRMA_DIGITAL   shift and go to state 9
+
+    firma_digital                  shift and go to state 43
+
+state 35
+
+    (6) contenido_json -> equipos COMA firma_digital COMA . version
+    (82) version -> . VERSION DOS_PUNTOS valor_simple
+
+    VERSION         shift and go to state 8
+
+    version                        shift and go to state 44
+
+state 36
+
+    (8) contenido_json -> version COMA equipos COMA . firma_digital
+    (83) firma_digital -> . FIRMA_DIGITAL DOS_PUNTOS valor_simple
+
+    FIRMA_DIGITAL   shift and go to state 9
+
+    firma_digital                  shift and go to state 45
+
+state 37
+
+    (11) contenido_json -> version COMA firma_digital COMA . equipos
+    (13) equipos -> . EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA
+
+    EQUIPOS         shift and go to state 7
+
+    equipos                        shift and go to state 46
+
+state 38
+
+    (10) contenido_json -> firma_digital COMA equipos COMA . version
+    (82) version -> . VERSION DOS_PUNTOS valor_simple
+
+    VERSION         shift and go to state 8
+
+    version                        shift and go to state 47
+
+state 39
+
+    (12) contenido_json -> firma_digital COMA version COMA . equipos
+    (13) equipos -> . EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA
+
+    EQUIPOS         shift and go to state 7
+
+    equipos                        shift and go to state 48
+
+state 40
+
+    (13) equipos -> EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos . CORCHETE_CIERRA
+    (15) lista_equipos -> lista_equipos . COMA equipo
+
+    CORCHETE_CIERRA shift and go to state 49
+    COMA            shift and go to state 50
+
+
+state 41
+
+    (14) lista_equipos -> equipo .
+
+    CORCHETE_CIERRA reduce using rule 14 (lista_equipos -> equipo .)
+    COMA            reduce using rule 14 (lista_equipos -> equipo .)
+
+
+state 42
+
+    (16) equipo -> LLAVE_ABRE . campos_equipo LLAVE_CIERRA
+    (17) campos_equipo -> . campo_equipo
+    (18) campos_equipo -> . campos_equipo COMA campo_equipo
+    (19) campo_equipo -> . NOMBRE_EQUIPO DOS_PUNTOS valor_simple
+    (20) campo_equipo -> . IDENTIDAD_EQUIPO DOS_PUNTOS valor_simple
+    (21) campo_equipo -> . CARRERA DOS_PUNTOS valor_simple
+    (22) campo_equipo -> . ASIGNATURA DOS_PUNTOS valor_simple
+    (23) campo_equipo -> . UNIVERSIDAD_REGIONAL DOS_PUNTOS valor_simple
+    (24) campo_equipo -> . ALIANZA_EQUIPO DOS_PUNTOS valor_simple
+    (25) campo_equipo -> . A_STRING DOS_PUNTOS valor_simple
+    (26) campo_equipo -> . DIRECCION DOS_PUNTOS LLAVE_ABRE campos_direccion LLAVE_CIERRA
+    (27) campo_equipo -> . INTEGRANTES DOS_PUNTOS CORCHETE_ABRE lista_integrantes CORCHETE_CIERRA
+    (28) campo_equipo -> . PROYECTOS DOS_PUNTOS CORCHETE_ABRE lista_proyectos CORCHETE_CIERRA
+
+    NOMBRE_EQUIPO   shift and go to state 53
+    IDENTIDAD_EQUIPO shift and go to state 54
+    CARRERA         shift and go to state 55
+    ASIGNATURA      shift and go to state 56
+    UNIVERSIDAD_REGIONAL shift and go to state 57
+    ALIANZA_EQUIPO  shift and go to state 58
+    A_STRING        shift and go to state 59
+    DIRECCION       shift and go to state 60
+    INTEGRANTES     shift and go to state 61
+    PROYECTOS       shift and go to state 62
+
+    campos_equipo                  shift and go to state 51
+    campo_equipo                   shift and go to state 52
+
+state 43
+
+    (5) contenido_json -> equipos COMA version COMA firma_digital .
+
+    LLAVE_CIERRA    reduce using rule 5 (contenido_json -> equipos COMA version COMA firma_digital .)
+
+
+state 44
+
+    (6) contenido_json -> equipos COMA firma_digital COMA version .
+
+    LLAVE_CIERRA    reduce using rule 6 (contenido_json -> equipos COMA firma_digital COMA version .)
+
+
+state 45
+
+    (8) contenido_json -> version COMA equipos COMA firma_digital .
+
+    LLAVE_CIERRA    reduce using rule 8 (contenido_json -> version COMA equipos COMA firma_digital .)
+
+
+state 46
+
+    (11) contenido_json -> version COMA firma_digital COMA equipos .
+
+    LLAVE_CIERRA    reduce using rule 11 (contenido_json -> version COMA firma_digital COMA equipos .)
+
+
+state 47
+
+    (10) contenido_json -> firma_digital COMA equipos COMA version .
+
+    LLAVE_CIERRA    reduce using rule 10 (contenido_json -> firma_digital COMA equipos COMA version .)
+
+
+state 48
+
+    (12) contenido_json -> firma_digital COMA version COMA equipos .
+
+    LLAVE_CIERRA    reduce using rule 12 (contenido_json -> firma_digital COMA version COMA equipos .)
+
+
+state 49
+
+    (13) equipos -> EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA .
+
+    COMA            reduce using rule 13 (equipos -> EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA .)
+    LLAVE_CIERRA    reduce using rule 13 (equipos -> EQUIPOS DOS_PUNTOS CORCHETE_ABRE lista_equipos CORCHETE_CIERRA .)
+
+
+state 50
+
+    (15) lista_equipos -> lista_equipos COMA . equipo
+    (16) equipo -> . LLAVE_ABRE campos_equipo LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 42
+
+    equipo                         shift and go to state 63
+
+state 51
+
+    (16) equipo -> LLAVE_ABRE campos_equipo . LLAVE_CIERRA
+    (18) campos_equipo -> campos_equipo . COMA campo_equipo
+
+    LLAVE_CIERRA    shift and go to state 64
+    COMA            shift and go to state 65
+
+
+state 52
+
+    (17) campos_equipo -> campo_equipo .
+
+    LLAVE_CIERRA    reduce using rule 17 (campos_equipo -> campo_equipo .)
+    COMA            reduce using rule 17 (campos_equipo -> campo_equipo .)
+
+
+state 53
+
+    (19) campo_equipo -> NOMBRE_EQUIPO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 66
+
+
+state 54
+
+    (20) campo_equipo -> IDENTIDAD_EQUIPO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 67
+
+
+state 55
+
+    (21) campo_equipo -> CARRERA . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 68
+
+
+state 56
+
+    (22) campo_equipo -> ASIGNATURA . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 69
+
+
+state 57
+
+    (23) campo_equipo -> UNIVERSIDAD_REGIONAL . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 70
+
+
+state 58
+
+    (24) campo_equipo -> ALIANZA_EQUIPO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 71
+
+
+state 59
+
+    (25) campo_equipo -> A_STRING . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 72
+
+
+state 60
+
+    (26) campo_equipo -> DIRECCION . DOS_PUNTOS LLAVE_ABRE campos_direccion LLAVE_CIERRA
+
+    DOS_PUNTOS      shift and go to state 73
+
+
+state 61
+
+    (27) campo_equipo -> INTEGRANTES . DOS_PUNTOS CORCHETE_ABRE lista_integrantes CORCHETE_CIERRA
+
+    DOS_PUNTOS      shift and go to state 74
+
+
+state 62
+
+    (28) campo_equipo -> PROYECTOS . DOS_PUNTOS CORCHETE_ABRE lista_proyectos CORCHETE_CIERRA
+
+    DOS_PUNTOS      shift and go to state 75
+
+
+state 63
+
+    (15) lista_equipos -> lista_equipos COMA equipo .
+
+    CORCHETE_CIERRA reduce using rule 15 (lista_equipos -> lista_equipos COMA equipo .)
+    COMA            reduce using rule 15 (lista_equipos -> lista_equipos COMA equipo .)
+
+
+state 64
+
+    (16) equipo -> LLAVE_ABRE campos_equipo LLAVE_CIERRA .
+
+    CORCHETE_CIERRA reduce using rule 16 (equipo -> LLAVE_ABRE campos_equipo LLAVE_CIERRA .)
+    COMA            reduce using rule 16 (equipo -> LLAVE_ABRE campos_equipo LLAVE_CIERRA .)
+
+
+state 65
+
+    (18) campos_equipo -> campos_equipo COMA . campo_equipo
+    (19) campo_equipo -> . NOMBRE_EQUIPO DOS_PUNTOS valor_simple
+    (20) campo_equipo -> . IDENTIDAD_EQUIPO DOS_PUNTOS valor_simple
+    (21) campo_equipo -> . CARRERA DOS_PUNTOS valor_simple
+    (22) campo_equipo -> . ASIGNATURA DOS_PUNTOS valor_simple
+    (23) campo_equipo -> . UNIVERSIDAD_REGIONAL DOS_PUNTOS valor_simple
+    (24) campo_equipo -> . ALIANZA_EQUIPO DOS_PUNTOS valor_simple
+    (25) campo_equipo -> . A_STRING DOS_PUNTOS valor_simple
+    (26) campo_equipo -> . DIRECCION DOS_PUNTOS LLAVE_ABRE campos_direccion LLAVE_CIERRA
+    (27) campo_equipo -> . INTEGRANTES DOS_PUNTOS CORCHETE_ABRE lista_integrantes CORCHETE_CIERRA
+    (28) campo_equipo -> . PROYECTOS DOS_PUNTOS CORCHETE_ABRE lista_proyectos CORCHETE_CIERRA
+
+    NOMBRE_EQUIPO   shift and go to state 53
+    IDENTIDAD_EQUIPO shift and go to state 54
+    CARRERA         shift and go to state 55
+    ASIGNATURA      shift and go to state 56
+    UNIVERSIDAD_REGIONAL shift and go to state 57
+    ALIANZA_EQUIPO  shift and go to state 58
+    A_STRING        shift and go to state 59
+    DIRECCION       shift and go to state 60
+    INTEGRANTES     shift and go to state 61
+    PROYECTOS       shift and go to state 62
+
+    campo_equipo                   shift and go to state 76
+
+state 66
+
+    (19) campo_equipo -> NOMBRE_EQUIPO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 77
+
+state 67
+
+    (20) campo_equipo -> IDENTIDAD_EQUIPO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 78
+
+state 68
+
+    (21) campo_equipo -> CARRERA DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 79
+
+state 69
+
+    (22) campo_equipo -> ASIGNATURA DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 80
+
+state 70
+
+    (23) campo_equipo -> UNIVERSIDAD_REGIONAL DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 81
+
+state 71
+
+    (24) campo_equipo -> ALIANZA_EQUIPO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 82
+
+state 72
+
+    (25) campo_equipo -> A_STRING DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 83
+
+state 73
+
+    (26) campo_equipo -> DIRECCION DOS_PUNTOS . LLAVE_ABRE campos_direccion LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 84
+
+
+state 74
+
+    (27) campo_equipo -> INTEGRANTES DOS_PUNTOS . CORCHETE_ABRE lista_integrantes CORCHETE_CIERRA
+
+    CORCHETE_ABRE   shift and go to state 85
+
+
+state 75
+
+    (28) campo_equipo -> PROYECTOS DOS_PUNTOS . CORCHETE_ABRE lista_proyectos CORCHETE_CIERRA
+
+    CORCHETE_ABRE   shift and go to state 86
+
+
+state 76
+
+    (18) campos_equipo -> campos_equipo COMA campo_equipo .
+
+    LLAVE_CIERRA    reduce using rule 18 (campos_equipo -> campos_equipo COMA campo_equipo .)
+    COMA            reduce using rule 18 (campos_equipo -> campos_equipo COMA campo_equipo .)
+
+
+state 77
+
+    (19) campo_equipo -> NOMBRE_EQUIPO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 19 (campo_equipo -> NOMBRE_EQUIPO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 19 (campo_equipo -> NOMBRE_EQUIPO DOS_PUNTOS valor_simple .)
+
+
+state 78
+
+    (20) campo_equipo -> IDENTIDAD_EQUIPO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 20 (campo_equipo -> IDENTIDAD_EQUIPO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 20 (campo_equipo -> IDENTIDAD_EQUIPO DOS_PUNTOS valor_simple .)
+
+
+state 79
+
+    (21) campo_equipo -> CARRERA DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 21 (campo_equipo -> CARRERA DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 21 (campo_equipo -> CARRERA DOS_PUNTOS valor_simple .)
+
+
+state 80
+
+    (22) campo_equipo -> ASIGNATURA DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 22 (campo_equipo -> ASIGNATURA DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 22 (campo_equipo -> ASIGNATURA DOS_PUNTOS valor_simple .)
+
+
+state 81
+
+    (23) campo_equipo -> UNIVERSIDAD_REGIONAL DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 23 (campo_equipo -> UNIVERSIDAD_REGIONAL DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 23 (campo_equipo -> UNIVERSIDAD_REGIONAL DOS_PUNTOS valor_simple .)
+
+
+state 82
+
+    (24) campo_equipo -> ALIANZA_EQUIPO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 24 (campo_equipo -> ALIANZA_EQUIPO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 24 (campo_equipo -> ALIANZA_EQUIPO DOS_PUNTOS valor_simple .)
+
+
+state 83
+
+    (25) campo_equipo -> A_STRING DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 25 (campo_equipo -> A_STRING DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 25 (campo_equipo -> A_STRING DOS_PUNTOS valor_simple .)
+
+
+state 84
+
+    (26) campo_equipo -> DIRECCION DOS_PUNTOS LLAVE_ABRE . campos_direccion LLAVE_CIERRA
+    (37) campos_direccion -> . campo_direccion
+    (38) campos_direccion -> . campos_direccion COMA campo_direccion
+    (39) campo_direccion -> . CALLE DOS_PUNTOS valor_simple
+    (40) campo_direccion -> . CIUDAD DOS_PUNTOS valor_simple
+    (41) campo_direccion -> . PAIS DOS_PUNTOS valor_simple
+
+    CALLE           shift and go to state 89
+    CIUDAD          shift and go to state 90
+    PAIS            shift and go to state 91
+
+    campos_direccion               shift and go to state 87
+    campo_direccion                shift and go to state 88
+
+state 85
+
+    (27) campo_equipo -> INTEGRANTES DOS_PUNTOS CORCHETE_ABRE . lista_integrantes CORCHETE_CIERRA
+    (42) lista_integrantes -> . integrante
+    (43) lista_integrantes -> . lista_integrantes COMA integrante
+    (44) integrante -> . LLAVE_ABRE campos_integrante LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 94
+
+    lista_integrantes              shift and go to state 92
+    integrante                     shift and go to state 93
+
+state 86
+
+    (28) campo_equipo -> PROYECTOS DOS_PUNTOS CORCHETE_ABRE . lista_proyectos CORCHETE_CIERRA
+    (57) lista_proyectos -> . proyecto
+    (58) lista_proyectos -> . lista_proyectos COMA proyecto
+    (59) proyecto -> . LLAVE_ABRE campos_proyecto LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 97
+
+    lista_proyectos                shift and go to state 95
+    proyecto                       shift and go to state 96
+
+state 87
+
+    (26) campo_equipo -> DIRECCION DOS_PUNTOS LLAVE_ABRE campos_direccion . LLAVE_CIERRA
+    (38) campos_direccion -> campos_direccion . COMA campo_direccion
+
+    LLAVE_CIERRA    shift and go to state 98
+    COMA            shift and go to state 99
+
+
+state 88
+
+    (37) campos_direccion -> campo_direccion .
+
+    LLAVE_CIERRA    reduce using rule 37 (campos_direccion -> campo_direccion .)
+    COMA            reduce using rule 37 (campos_direccion -> campo_direccion .)
+
+
+state 89
+
+    (39) campo_direccion -> CALLE . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 100
+
+
+state 90
+
+    (40) campo_direccion -> CIUDAD . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 101
+
+
+state 91
+
+    (41) campo_direccion -> PAIS . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 102
+
+
+state 92
+
+    (27) campo_equipo -> INTEGRANTES DOS_PUNTOS CORCHETE_ABRE lista_integrantes . CORCHETE_CIERRA
+    (43) lista_integrantes -> lista_integrantes . COMA integrante
+
+    CORCHETE_CIERRA shift and go to state 103
+    COMA            shift and go to state 104
+
+
+state 93
+
+    (42) lista_integrantes -> integrante .
+
+    CORCHETE_CIERRA reduce using rule 42 (lista_integrantes -> integrante .)
+    COMA            reduce using rule 42 (lista_integrantes -> integrante .)
+
+
+state 94
+
+    (44) integrante -> LLAVE_ABRE . campos_integrante LLAVE_CIERRA
+    (45) campos_integrante -> . campo_integrante
+    (46) campos_integrante -> . campos_integrante COMA campo_integrante
+    (47) campo_integrante -> . NOMBRE DOS_PUNTOS valor_simple
+    (48) campo_integrante -> . EDAD DOS_PUNTOS valor_simple
+    (49) campo_integrante -> . CARGO DOS_PUNTOS valor_simple
+    (50) campo_integrante -> . FOTO DOS_PUNTOS valor_simple
+    (51) campo_integrante -> . EMAIL DOS_PUNTOS campo_email
+    (52) campo_integrante -> . HABILIDADES DOS_PUNTOS valor_simple
+    (53) campo_integrante -> . SALARIO DOS_PUNTOS valor_simple
+    (54) campo_integrante -> . ACTIVO DOS_PUNTOS valor_simple
+    (55) campo_integrante -> . A_STRING DOS_PUNTOS valor_simple
+
+    NOMBRE          shift and go to state 107
+    EDAD            shift and go to state 108
+    CARGO           shift and go to state 109
+    FOTO            shift and go to state 110
+    EMAIL           shift and go to state 111
+    HABILIDADES     shift and go to state 112
+    SALARIO         shift and go to state 113
+    ACTIVO          shift and go to state 114
+    A_STRING        shift and go to state 115
+
+    campos_integrante              shift and go to state 105
+    campo_integrante               shift and go to state 106
+
+state 95
+
+    (28) campo_equipo -> PROYECTOS DOS_PUNTOS CORCHETE_ABRE lista_proyectos . CORCHETE_CIERRA
+    (58) lista_proyectos -> lista_proyectos . COMA proyecto
+
+    CORCHETE_CIERRA shift and go to state 116
+    COMA            shift and go to state 117
+
+
+state 96
+
+    (57) lista_proyectos -> proyecto .
+
+    CORCHETE_CIERRA reduce using rule 57 (lista_proyectos -> proyecto .)
+    COMA            reduce using rule 57 (lista_proyectos -> proyecto .)
+
+
+state 97
+
+    (59) proyecto -> LLAVE_ABRE . campos_proyecto LLAVE_CIERRA
+    (60) campos_proyecto -> . campo_proyecto
+    (61) campos_proyecto -> . campos_proyecto COMA campo_proyecto
+    (62) campo_proyecto -> . NOMBRE DOS_PUNTOS valor_simple
+    (63) campo_proyecto -> . ESTADO DOS_PUNTOS valor_simple
+    (64) campo_proyecto -> . RESUMEN DOS_PUNTOS valor_simple
+    (65) campo_proyecto -> . FECHA_INICIO DOS_PUNTOS valor_simple
+    (66) campo_proyecto -> . FECHA_FIN DOS_PUNTOS valor_simple
+    (67) campo_proyecto -> . VIDEO DOS_PUNTOS valor_simple
+    (68) campo_proyecto -> . CONCLUSION DOS_PUNTOS valor_simple
+    (69) campo_proyecto -> . A_STRING DOS_PUNTOS valor_simple
+    (70) campo_proyecto -> . TAREAS DOS_PUNTOS CORCHETE_ABRE lista_tareas CORCHETE_CIERRA
+
+    NOMBRE          shift and go to state 120
+    ESTADO          shift and go to state 121
+    RESUMEN         shift and go to state 122
+    FECHA_INICIO    shift and go to state 123
+    FECHA_FIN       shift and go to state 124
+    VIDEO           shift and go to state 125
+    CONCLUSION      shift and go to state 126
+    A_STRING        shift and go to state 127
+    TAREAS          shift and go to state 128
+
+    campos_proyecto                shift and go to state 118
+    campo_proyecto                 shift and go to state 119
+
+state 98
+
+    (26) campo_equipo -> DIRECCION DOS_PUNTOS LLAVE_ABRE campos_direccion LLAVE_CIERRA .
+
+    LLAVE_CIERRA    reduce using rule 26 (campo_equipo -> DIRECCION DOS_PUNTOS LLAVE_ABRE campos_direccion LLAVE_CIERRA .)
+    COMA            reduce using rule 26 (campo_equipo -> DIRECCION DOS_PUNTOS LLAVE_ABRE campos_direccion LLAVE_CIERRA .)
+
+
+state 99
+
+    (38) campos_direccion -> campos_direccion COMA . campo_direccion
+    (39) campo_direccion -> . CALLE DOS_PUNTOS valor_simple
+    (40) campo_direccion -> . CIUDAD DOS_PUNTOS valor_simple
+    (41) campo_direccion -> . PAIS DOS_PUNTOS valor_simple
+
+    CALLE           shift and go to state 89
+    CIUDAD          shift and go to state 90
+    PAIS            shift and go to state 91
+
+    campo_direccion                shift and go to state 129
+
+state 100
+
+    (39) campo_direccion -> CALLE DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 130
+
+state 101
+
+    (40) campo_direccion -> CIUDAD DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 131
+
+state 102
+
+    (41) campo_direccion -> PAIS DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 132
+
+state 103
+
+    (27) campo_equipo -> INTEGRANTES DOS_PUNTOS CORCHETE_ABRE lista_integrantes CORCHETE_CIERRA .
+
+    LLAVE_CIERRA    reduce using rule 27 (campo_equipo -> INTEGRANTES DOS_PUNTOS CORCHETE_ABRE lista_integrantes CORCHETE_CIERRA .)
+    COMA            reduce using rule 27 (campo_equipo -> INTEGRANTES DOS_PUNTOS CORCHETE_ABRE lista_integrantes CORCHETE_CIERRA .)
+
+
+state 104
+
+    (43) lista_integrantes -> lista_integrantes COMA . integrante
+    (44) integrante -> . LLAVE_ABRE campos_integrante LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 94
+
+    integrante                     shift and go to state 133
+
+state 105
+
+    (44) integrante -> LLAVE_ABRE campos_integrante . LLAVE_CIERRA
+    (46) campos_integrante -> campos_integrante . COMA campo_integrante
+
+    LLAVE_CIERRA    shift and go to state 134
+    COMA            shift and go to state 135
+
+
+state 106
+
+    (45) campos_integrante -> campo_integrante .
+
+    LLAVE_CIERRA    reduce using rule 45 (campos_integrante -> campo_integrante .)
+    COMA            reduce using rule 45 (campos_integrante -> campo_integrante .)
+
+
+state 107
+
+    (47) campo_integrante -> NOMBRE . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 136
+
+
+state 108
+
+    (48) campo_integrante -> EDAD . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 137
+
+
+state 109
+
+    (49) campo_integrante -> CARGO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 138
+
+
+state 110
+
+    (50) campo_integrante -> FOTO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 139
+
+
+state 111
+
+    (51) campo_integrante -> EMAIL . DOS_PUNTOS campo_email
+
+    DOS_PUNTOS      shift and go to state 140
+
+
+state 112
+
+    (52) campo_integrante -> HABILIDADES . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 141
+
+
+state 113
+
+    (53) campo_integrante -> SALARIO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 142
+
+
+state 114
+
+    (54) campo_integrante -> ACTIVO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 143
+
+
+state 115
+
+    (55) campo_integrante -> A_STRING . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 144
+
+
+state 116
+
+    (28) campo_equipo -> PROYECTOS DOS_PUNTOS CORCHETE_ABRE lista_proyectos CORCHETE_CIERRA .
+
+    LLAVE_CIERRA    reduce using rule 28 (campo_equipo -> PROYECTOS DOS_PUNTOS CORCHETE_ABRE lista_proyectos CORCHETE_CIERRA .)
+    COMA            reduce using rule 28 (campo_equipo -> PROYECTOS DOS_PUNTOS CORCHETE_ABRE lista_proyectos CORCHETE_CIERRA .)
+
+
+state 117
+
+    (58) lista_proyectos -> lista_proyectos COMA . proyecto
+    (59) proyecto -> . LLAVE_ABRE campos_proyecto LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 97
+
+    proyecto                       shift and go to state 145
+
+state 118
+
+    (59) proyecto -> LLAVE_ABRE campos_proyecto . LLAVE_CIERRA
+    (61) campos_proyecto -> campos_proyecto . COMA campo_proyecto
+
+    LLAVE_CIERRA    shift and go to state 146
+    COMA            shift and go to state 147
+
+
+state 119
+
+    (60) campos_proyecto -> campo_proyecto .
+
+    LLAVE_CIERRA    reduce using rule 60 (campos_proyecto -> campo_proyecto .)
+    COMA            reduce using rule 60 (campos_proyecto -> campo_proyecto .)
+
+
+state 120
+
+    (62) campo_proyecto -> NOMBRE . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 148
+
+
+state 121
+
+    (63) campo_proyecto -> ESTADO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 149
+
+
+state 122
+
+    (64) campo_proyecto -> RESUMEN . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 150
+
+
+state 123
+
+    (65) campo_proyecto -> FECHA_INICIO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 151
+
+
+state 124
+
+    (66) campo_proyecto -> FECHA_FIN . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 152
+
+
+state 125
+
+    (67) campo_proyecto -> VIDEO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 153
+
+
+state 126
+
+    (68) campo_proyecto -> CONCLUSION . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 154
+
+
+state 127
+
+    (69) campo_proyecto -> A_STRING . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 155
+
+
+state 128
+
+    (70) campo_proyecto -> TAREAS . DOS_PUNTOS CORCHETE_ABRE lista_tareas CORCHETE_CIERRA
+
+    DOS_PUNTOS      shift and go to state 156
+
+
+state 129
+
+    (38) campos_direccion -> campos_direccion COMA campo_direccion .
+
+    LLAVE_CIERRA    reduce using rule 38 (campos_direccion -> campos_direccion COMA campo_direccion .)
+    COMA            reduce using rule 38 (campos_direccion -> campos_direccion COMA campo_direccion .)
+
+
+state 130
+
+    (39) campo_direccion -> CALLE DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 39 (campo_direccion -> CALLE DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 39 (campo_direccion -> CALLE DOS_PUNTOS valor_simple .)
+
+
+state 131
+
+    (40) campo_direccion -> CIUDAD DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 40 (campo_direccion -> CIUDAD DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 40 (campo_direccion -> CIUDAD DOS_PUNTOS valor_simple .)
+
+
+state 132
+
+    (41) campo_direccion -> PAIS DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 41 (campo_direccion -> PAIS DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 41 (campo_direccion -> PAIS DOS_PUNTOS valor_simple .)
+
+
+state 133
+
+    (43) lista_integrantes -> lista_integrantes COMA integrante .
+
+    CORCHETE_CIERRA reduce using rule 43 (lista_integrantes -> lista_integrantes COMA integrante .)
+    COMA            reduce using rule 43 (lista_integrantes -> lista_integrantes COMA integrante .)
+
+
+state 134
+
+    (44) integrante -> LLAVE_ABRE campos_integrante LLAVE_CIERRA .
+
+    CORCHETE_CIERRA reduce using rule 44 (integrante -> LLAVE_ABRE campos_integrante LLAVE_CIERRA .)
+    COMA            reduce using rule 44 (integrante -> LLAVE_ABRE campos_integrante LLAVE_CIERRA .)
+
+
+state 135
+
+    (46) campos_integrante -> campos_integrante COMA . campo_integrante
+    (47) campo_integrante -> . NOMBRE DOS_PUNTOS valor_simple
+    (48) campo_integrante -> . EDAD DOS_PUNTOS valor_simple
+    (49) campo_integrante -> . CARGO DOS_PUNTOS valor_simple
+    (50) campo_integrante -> . FOTO DOS_PUNTOS valor_simple
+    (51) campo_integrante -> . EMAIL DOS_PUNTOS campo_email
+    (52) campo_integrante -> . HABILIDADES DOS_PUNTOS valor_simple
+    (53) campo_integrante -> . SALARIO DOS_PUNTOS valor_simple
+    (54) campo_integrante -> . ACTIVO DOS_PUNTOS valor_simple
+    (55) campo_integrante -> . A_STRING DOS_PUNTOS valor_simple
+
+    NOMBRE          shift and go to state 107
+    EDAD            shift and go to state 108
+    CARGO           shift and go to state 109
+    FOTO            shift and go to state 110
+    EMAIL           shift and go to state 111
+    HABILIDADES     shift and go to state 112
+    SALARIO         shift and go to state 113
+    ACTIVO          shift and go to state 114
+    A_STRING        shift and go to state 115
+
+    campo_integrante               shift and go to state 157
+
+state 136
+
+    (47) campo_integrante -> NOMBRE DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 158
+
+state 137
+
+    (48) campo_integrante -> EDAD DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 159
+
+state 138
+
+    (49) campo_integrante -> CARGO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 160
+
+state 139
+
+    (50) campo_integrante -> FOTO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 161
+
+state 140
+
+    (51) campo_integrante -> EMAIL DOS_PUNTOS . campo_email
+    (56) campo_email -> . EMAIL DOS_PUNTOS A_STRING
+
+    EMAIL           shift and go to state 162
+
+    campo_email                    shift and go to state 163
+
+state 141
+
+    (52) campo_integrante -> HABILIDADES DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 164
+
+state 142
+
+    (53) campo_integrante -> SALARIO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 165
+
+state 143
+
+    (54) campo_integrante -> ACTIVO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 166
+
+state 144
+
+    (55) campo_integrante -> A_STRING DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 167
+
+state 145
+
+    (58) lista_proyectos -> lista_proyectos COMA proyecto .
+
+    CORCHETE_CIERRA reduce using rule 58 (lista_proyectos -> lista_proyectos COMA proyecto .)
+    COMA            reduce using rule 58 (lista_proyectos -> lista_proyectos COMA proyecto .)
+
+
+state 146
+
+    (59) proyecto -> LLAVE_ABRE campos_proyecto LLAVE_CIERRA .
+
+    CORCHETE_CIERRA reduce using rule 59 (proyecto -> LLAVE_ABRE campos_proyecto LLAVE_CIERRA .)
+    COMA            reduce using rule 59 (proyecto -> LLAVE_ABRE campos_proyecto LLAVE_CIERRA .)
+
+
+state 147
+
+    (61) campos_proyecto -> campos_proyecto COMA . campo_proyecto
+    (62) campo_proyecto -> . NOMBRE DOS_PUNTOS valor_simple
+    (63) campo_proyecto -> . ESTADO DOS_PUNTOS valor_simple
+    (64) campo_proyecto -> . RESUMEN DOS_PUNTOS valor_simple
+    (65) campo_proyecto -> . FECHA_INICIO DOS_PUNTOS valor_simple
+    (66) campo_proyecto -> . FECHA_FIN DOS_PUNTOS valor_simple
+    (67) campo_proyecto -> . VIDEO DOS_PUNTOS valor_simple
+    (68) campo_proyecto -> . CONCLUSION DOS_PUNTOS valor_simple
+    (69) campo_proyecto -> . A_STRING DOS_PUNTOS valor_simple
+    (70) campo_proyecto -> . TAREAS DOS_PUNTOS CORCHETE_ABRE lista_tareas CORCHETE_CIERRA
+
+    NOMBRE          shift and go to state 120
+    ESTADO          shift and go to state 121
+    RESUMEN         shift and go to state 122
+    FECHA_INICIO    shift and go to state 123
+    FECHA_FIN       shift and go to state 124
+    VIDEO           shift and go to state 125
+    CONCLUSION      shift and go to state 126
+    A_STRING        shift and go to state 127
+    TAREAS          shift and go to state 128
+
+    campo_proyecto                 shift and go to state 168
+
+state 148
+
+    (62) campo_proyecto -> NOMBRE DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 169
+
+state 149
+
+    (63) campo_proyecto -> ESTADO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 170
+
+state 150
+
+    (64) campo_proyecto -> RESUMEN DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 171
+
+state 151
+
+    (65) campo_proyecto -> FECHA_INICIO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 172
+
+state 152
+
+    (66) campo_proyecto -> FECHA_FIN DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 173
+
+state 153
+
+    (67) campo_proyecto -> VIDEO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 174
+
+state 154
+
+    (68) campo_proyecto -> CONCLUSION DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 175
+
+state 155
+
+    (69) campo_proyecto -> A_STRING DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 176
+
+state 156
+
+    (70) campo_proyecto -> TAREAS DOS_PUNTOS . CORCHETE_ABRE lista_tareas CORCHETE_CIERRA
+
+    CORCHETE_ABRE   shift and go to state 177
+
+
+state 157
+
+    (46) campos_integrante -> campos_integrante COMA campo_integrante .
+
+    LLAVE_CIERRA    reduce using rule 46 (campos_integrante -> campos_integrante COMA campo_integrante .)
+    COMA            reduce using rule 46 (campos_integrante -> campos_integrante COMA campo_integrante .)
+
+
+state 158
+
+    (47) campo_integrante -> NOMBRE DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 47 (campo_integrante -> NOMBRE DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 47 (campo_integrante -> NOMBRE DOS_PUNTOS valor_simple .)
+
+
+state 159
+
+    (48) campo_integrante -> EDAD DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 48 (campo_integrante -> EDAD DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 48 (campo_integrante -> EDAD DOS_PUNTOS valor_simple .)
+
+
+state 160
+
+    (49) campo_integrante -> CARGO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 49 (campo_integrante -> CARGO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 49 (campo_integrante -> CARGO DOS_PUNTOS valor_simple .)
+
+
+state 161
+
+    (50) campo_integrante -> FOTO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 50 (campo_integrante -> FOTO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 50 (campo_integrante -> FOTO DOS_PUNTOS valor_simple .)
+
+
+state 162
+
+    (56) campo_email -> EMAIL . DOS_PUNTOS A_STRING
+
+    DOS_PUNTOS      shift and go to state 178
+
+
+state 163
+
+    (51) campo_integrante -> EMAIL DOS_PUNTOS campo_email .
+
+    LLAVE_CIERRA    reduce using rule 51 (campo_integrante -> EMAIL DOS_PUNTOS campo_email .)
+    COMA            reduce using rule 51 (campo_integrante -> EMAIL DOS_PUNTOS campo_email .)
+
+
+state 164
+
+    (52) campo_integrante -> HABILIDADES DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 52 (campo_integrante -> HABILIDADES DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 52 (campo_integrante -> HABILIDADES DOS_PUNTOS valor_simple .)
+
+
+state 165
+
+    (53) campo_integrante -> SALARIO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 53 (campo_integrante -> SALARIO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 53 (campo_integrante -> SALARIO DOS_PUNTOS valor_simple .)
+
+
+state 166
+
+    (54) campo_integrante -> ACTIVO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 54 (campo_integrante -> ACTIVO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 54 (campo_integrante -> ACTIVO DOS_PUNTOS valor_simple .)
+
+
+state 167
+
+    (55) campo_integrante -> A_STRING DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 55 (campo_integrante -> A_STRING DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 55 (campo_integrante -> A_STRING DOS_PUNTOS valor_simple .)
+
+
+state 168
+
+    (61) campos_proyecto -> campos_proyecto COMA campo_proyecto .
+
+    LLAVE_CIERRA    reduce using rule 61 (campos_proyecto -> campos_proyecto COMA campo_proyecto .)
+    COMA            reduce using rule 61 (campos_proyecto -> campos_proyecto COMA campo_proyecto .)
+
+
+state 169
+
+    (62) campo_proyecto -> NOMBRE DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 62 (campo_proyecto -> NOMBRE DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 62 (campo_proyecto -> NOMBRE DOS_PUNTOS valor_simple .)
+
+
+state 170
+
+    (63) campo_proyecto -> ESTADO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 63 (campo_proyecto -> ESTADO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 63 (campo_proyecto -> ESTADO DOS_PUNTOS valor_simple .)
+
+
+state 171
+
+    (64) campo_proyecto -> RESUMEN DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 64 (campo_proyecto -> RESUMEN DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 64 (campo_proyecto -> RESUMEN DOS_PUNTOS valor_simple .)
+
+
+state 172
+
+    (65) campo_proyecto -> FECHA_INICIO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 65 (campo_proyecto -> FECHA_INICIO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 65 (campo_proyecto -> FECHA_INICIO DOS_PUNTOS valor_simple .)
+
+
+state 173
+
+    (66) campo_proyecto -> FECHA_FIN DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 66 (campo_proyecto -> FECHA_FIN DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 66 (campo_proyecto -> FECHA_FIN DOS_PUNTOS valor_simple .)
+
+
+state 174
+
+    (67) campo_proyecto -> VIDEO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 67 (campo_proyecto -> VIDEO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 67 (campo_proyecto -> VIDEO DOS_PUNTOS valor_simple .)
+
+
+state 175
+
+    (68) campo_proyecto -> CONCLUSION DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 68 (campo_proyecto -> CONCLUSION DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 68 (campo_proyecto -> CONCLUSION DOS_PUNTOS valor_simple .)
+
+
+state 176
+
+    (69) campo_proyecto -> A_STRING DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 69 (campo_proyecto -> A_STRING DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 69 (campo_proyecto -> A_STRING DOS_PUNTOS valor_simple .)
+
+
+state 177
+
+    (70) campo_proyecto -> TAREAS DOS_PUNTOS CORCHETE_ABRE . lista_tareas CORCHETE_CIERRA
+    (71) lista_tareas -> . tarea
+    (72) lista_tareas -> . lista_tareas COMA tarea
+    (73) tarea -> . LLAVE_ABRE campos_tarea LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 181
+
+    lista_tareas                   shift and go to state 179
+    tarea                          shift and go to state 180
+
+state 178
+
+    (56) campo_email -> EMAIL DOS_PUNTOS . A_STRING
+
+    A_STRING        shift and go to state 182
+
+
+state 179
+
+    (70) campo_proyecto -> TAREAS DOS_PUNTOS CORCHETE_ABRE lista_tareas . CORCHETE_CIERRA
+    (72) lista_tareas -> lista_tareas . COMA tarea
+
+    CORCHETE_CIERRA shift and go to state 183
+    COMA            shift and go to state 184
+
+
+state 180
+
+    (71) lista_tareas -> tarea .
+
+    CORCHETE_CIERRA reduce using rule 71 (lista_tareas -> tarea .)
+    COMA            reduce using rule 71 (lista_tareas -> tarea .)
+
+
+state 181
+
+    (73) tarea -> LLAVE_ABRE . campos_tarea LLAVE_CIERRA
+    (74) campos_tarea -> . campo_tarea
+    (75) campos_tarea -> . campos_tarea COMA campo_tarea
+    (76) campo_tarea -> . NOMBRE DOS_PUNTOS valor_simple
+    (77) campo_tarea -> . ESTADO DOS_PUNTOS valor_simple
+    (78) campo_tarea -> . RESUMEN DOS_PUNTOS valor_simple
+    (79) campo_tarea -> . FECHA_INICIO DOS_PUNTOS valor_simple
+    (80) campo_tarea -> . FECHA_FIN DOS_PUNTOS valor_simple
+    (81) campo_tarea -> . A_STRING DOS_PUNTOS valor_simple
+
+    NOMBRE          shift and go to state 187
+    ESTADO          shift and go to state 188
+    RESUMEN         shift and go to state 189
+    FECHA_INICIO    shift and go to state 190
+    FECHA_FIN       shift and go to state 191
+    A_STRING        shift and go to state 192
+
+    campos_tarea                   shift and go to state 185
+    campo_tarea                    shift and go to state 186
+
+state 182
+
+    (56) campo_email -> EMAIL DOS_PUNTOS A_STRING .
+
+    LLAVE_CIERRA    reduce using rule 56 (campo_email -> EMAIL DOS_PUNTOS A_STRING .)
+    COMA            reduce using rule 56 (campo_email -> EMAIL DOS_PUNTOS A_STRING .)
+
+
+state 183
+
+    (70) campo_proyecto -> TAREAS DOS_PUNTOS CORCHETE_ABRE lista_tareas CORCHETE_CIERRA .
+
+    LLAVE_CIERRA    reduce using rule 70 (campo_proyecto -> TAREAS DOS_PUNTOS CORCHETE_ABRE lista_tareas CORCHETE_CIERRA .)
+    COMA            reduce using rule 70 (campo_proyecto -> TAREAS DOS_PUNTOS CORCHETE_ABRE lista_tareas CORCHETE_CIERRA .)
+
+
+state 184
+
+    (72) lista_tareas -> lista_tareas COMA . tarea
+    (73) tarea -> . LLAVE_ABRE campos_tarea LLAVE_CIERRA
+
+    LLAVE_ABRE      shift and go to state 181
+
+    tarea                          shift and go to state 193
+
+state 185
+
+    (73) tarea -> LLAVE_ABRE campos_tarea . LLAVE_CIERRA
+    (75) campos_tarea -> campos_tarea . COMA campo_tarea
+
+    LLAVE_CIERRA    shift and go to state 194
+    COMA            shift and go to state 195
+
+
+state 186
+
+    (74) campos_tarea -> campo_tarea .
+
+    LLAVE_CIERRA    reduce using rule 74 (campos_tarea -> campo_tarea .)
+    COMA            reduce using rule 74 (campos_tarea -> campo_tarea .)
+
+
+state 187
+
+    (76) campo_tarea -> NOMBRE . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 196
+
+
+state 188
+
+    (77) campo_tarea -> ESTADO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 197
+
+
+state 189
+
+    (78) campo_tarea -> RESUMEN . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 198
+
+
+state 190
+
+    (79) campo_tarea -> FECHA_INICIO . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 199
+
+
+state 191
+
+    (80) campo_tarea -> FECHA_FIN . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 200
+
+
+state 192
+
+    (81) campo_tarea -> A_STRING . DOS_PUNTOS valor_simple
+
+    DOS_PUNTOS      shift and go to state 201
+
+
+state 193
+
+    (72) lista_tareas -> lista_tareas COMA tarea .
+
+    CORCHETE_CIERRA reduce using rule 72 (lista_tareas -> lista_tareas COMA tarea .)
+    COMA            reduce using rule 72 (lista_tareas -> lista_tareas COMA tarea .)
+
+
+state 194
+
+    (73) tarea -> LLAVE_ABRE campos_tarea LLAVE_CIERRA .
+
+    CORCHETE_CIERRA reduce using rule 73 (tarea -> LLAVE_ABRE campos_tarea LLAVE_CIERRA .)
+    COMA            reduce using rule 73 (tarea -> LLAVE_ABRE campos_tarea LLAVE_CIERRA .)
+
+
+state 195
+
+    (75) campos_tarea -> campos_tarea COMA . campo_tarea
+    (76) campo_tarea -> . NOMBRE DOS_PUNTOS valor_simple
+    (77) campo_tarea -> . ESTADO DOS_PUNTOS valor_simple
+    (78) campo_tarea -> . RESUMEN DOS_PUNTOS valor_simple
+    (79) campo_tarea -> . FECHA_INICIO DOS_PUNTOS valor_simple
+    (80) campo_tarea -> . FECHA_FIN DOS_PUNTOS valor_simple
+    (81) campo_tarea -> . A_STRING DOS_PUNTOS valor_simple
+
+    NOMBRE          shift and go to state 187
+    ESTADO          shift and go to state 188
+    RESUMEN         shift and go to state 189
+    FECHA_INICIO    shift and go to state 190
+    FECHA_FIN       shift and go to state 191
+    A_STRING        shift and go to state 192
+
+    campo_tarea                    shift and go to state 202
+
+state 196
+
+    (76) campo_tarea -> NOMBRE DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 203
+
+state 197
+
+    (77) campo_tarea -> ESTADO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 204
+
+state 198
+
+    (78) campo_tarea -> RESUMEN DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 205
+
+state 199
+
+    (79) campo_tarea -> FECHA_INICIO DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 206
+
+state 200
+
+    (80) campo_tarea -> FECHA_FIN DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 207
+
+state 201
+
+    (81) campo_tarea -> A_STRING DOS_PUNTOS . valor_simple
+    (29) valor_simple -> . A_STRING
+    (30) valor_simple -> . LINK
+    (31) valor_simple -> . EMAIL
+    (32) valor_simple -> . NUMBER
+    (33) valor_simple -> . TRUE
+    (34) valor_simple -> . FALSE
+    (35) valor_simple -> . NULL
+    (36) valor_simple -> . DATE
+
+    A_STRING        shift and go to state 25
+    LINK            shift and go to state 26
+    EMAIL           shift and go to state 27
+    NUMBER          shift and go to state 28
+    TRUE            shift and go to state 29
+    FALSE           shift and go to state 30
+    NULL            shift and go to state 31
+    DATE            shift and go to state 32
+
+    valor_simple                   shift and go to state 208
+
+state 202
+
+    (75) campos_tarea -> campos_tarea COMA campo_tarea .
+
+    LLAVE_CIERRA    reduce using rule 75 (campos_tarea -> campos_tarea COMA campo_tarea .)
+    COMA            reduce using rule 75 (campos_tarea -> campos_tarea COMA campo_tarea .)
+
+
+state 203
+
+    (76) campo_tarea -> NOMBRE DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 76 (campo_tarea -> NOMBRE DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 76 (campo_tarea -> NOMBRE DOS_PUNTOS valor_simple .)
+
+
+state 204
+
+    (77) campo_tarea -> ESTADO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 77 (campo_tarea -> ESTADO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 77 (campo_tarea -> ESTADO DOS_PUNTOS valor_simple .)
+
+
+state 205
+
+    (78) campo_tarea -> RESUMEN DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 78 (campo_tarea -> RESUMEN DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 78 (campo_tarea -> RESUMEN DOS_PUNTOS valor_simple .)
+
+
+state 206
+
+    (79) campo_tarea -> FECHA_INICIO DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 79 (campo_tarea -> FECHA_INICIO DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 79 (campo_tarea -> FECHA_INICIO DOS_PUNTOS valor_simple .)
+
+
+state 207
+
+    (80) campo_tarea -> FECHA_FIN DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 80 (campo_tarea -> FECHA_FIN DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 80 (campo_tarea -> FECHA_FIN DOS_PUNTOS valor_simple .)
+
+
+state 208
+
+    (81) campo_tarea -> A_STRING DOS_PUNTOS valor_simple .
+
+    LLAVE_CIERRA    reduce using rule 81 (campo_tarea -> A_STRING DOS_PUNTOS valor_simple .)
+    COMA            reduce using rule 81 (campo_tarea -> A_STRING DOS_PUNTOS valor_simple .)
+

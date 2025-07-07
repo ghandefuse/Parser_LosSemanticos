@@ -1,0 +1,81 @@
+{ 
+"version": "Release 1.0.9",  
+"equipos": [
+    {
+      "nombre_equipo": "Sintaxis y semantica de Lenguajes",
+      "identidad_equipo": "https://www.frre.utn.edu.ar/public/themes/utnsd/images/UTN_FRRE-isi.png",
+      "direccion": {
+        "calle": "French 414",
+        "pais": "argentina",
+        "ciudad": "Resistencia"
+        },
+      "link": "https://frre.cvg.utn.edu.ar/course/view.php?id=399",
+      "carrera": "Ingenieria en sistemas de Informacion",
+      "asignatura": "Sintaxis y semantica de Lenguajes",
+      "universidad_regional": "UTN Facultad Regional Resistencia",
+      "alianza_equipo": "La organizacion del equipo se realiza segun la planificacion anual, junto al cronograma de clases. Alli se determinan los horarios de clases,temas a tratar cada clase y resultados esperados. La comunicacion entre integrantes se realiza mediante correo electronico, grupos de whatsapp",
+      "integrantes": [
+        {
+                "nombre": "Rodrigo Vigil",
+                "edad": 30,
+                "cargo": "Marketing",
+                "foto": "https://pbs.twimg.com/media/FCPNWd8XsAg5AkL.jpg",
+                "email": "rodrigo@chirigui.com.mx",
+                "habilidades": "receptor, bateador",
+                "salario": 57000.45,
+                "activo": true
+        },
+        {
+                "nombre": "Juliana Torre",
+                "cargo": "Project Manager",
+                "foto": "https://i.pinimg.com/736x/96/89/97/9689977519645c642236582b6dc64c33.jpg",
+                "email": "juliana@bears.com",
+                "habilidades": "receptor, lanzador",
+                "salario": 81300.45,
+                "activo": true
+        },
+        {
+                "nombre": "Nicolas Tortosa",
+                "edad": 25,
+                "cargo": "Developer",
+                "foto": "https://www.baseballamerica.com/wp-content/uploads/2025/02/Brian_OConnor_Virginia_Getty.jpg",
+                "email": "nico@bears.com",
+                "habilidades": "receptor, lanceador",
+                "salario": 111300,
+                "activo": true
+        } ],
+        "proyectos": [
+                {
+                  "nombre": "Interprete JSON y traductor HTML",
+                  "estado": "In progress",
+                  "resumen": "construir analizadores lexico y sintactico que permita analizar, validar y transformar un documento JSON que describe y almacena informacion de equipos y proyectos. Debera indicar si esta bien construido (adecuado al formato indicado, sin errores) de otra manera indicar los errores; adicionalmente a medida que analiza el documento debera transformar el contenido en un documento HTML.",
+                  "tareas": [
+                    {
+                        "nombre": "Gramatica",
+                        "estado": "In progress",
+                        "resumen": "Presentar la gramatica del analizador sintactico. contemplando restricciones del enunciado.",
+                        "fecha_inicio": "2025-03-18"
+                    },
+                      {
+                        "resumen": "Presentar lexer reconociendo todos los tokens.Actualizar documento",
+                        "nombre": "LEXER",
+                        "estado": "To Do",
+                        "fecha_inicio": null,
+                        "fecha_fin": "2025-06-08"
+                    },
+                      {
+                        "estado": "To Do",
+                        "nombre": "PARSER",
+                        "resumen": "Presentacion final. LEXER + PARSER . funcionamiento completo.Actualizar documento, subir video resumen.",
+                        "fecha_inicio": "2025-04-18",
+                        "fecha_fin": "2025-07-06"
+                    }],
+                  "fecha_inicio": "2025-03-18",
+                  "fecha_fin": "2025-07-06",
+                  "video": "https://www.youtube.com/watch?v=GLdIiZQphxQ",
+                  "conclusion": "por escribirse"
+                } ]
+    }
+  ],
+  "firma_digital": "string"
+}
