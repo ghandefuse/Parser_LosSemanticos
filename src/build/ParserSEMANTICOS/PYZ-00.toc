@@ -1,5 +1,5 @@
 ('C:\\Users\\GhanDFS\\Desktop\\UTN\\SEGUNDO AÑO\\Sintáxis\\TFI '
- 'ENTREGA\\src\\build\\ParserSEMANTICOS\\PYZ-00.pyz',
+ 'ENTREGA\\Parser_LosSemanticos\\src\\build\\ParserSEMANTICOS\\PYZ-00.pyz',
  [('PIL',
    'C:\\Users\\GhanDFS\\AppData\\Local\\Programs\\Python\\Python313\\Lib\\site-packages\\PIL\\__init__.py',
    'PYMODULE'),
