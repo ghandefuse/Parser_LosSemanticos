@@ -6,17 +6,17 @@
       "asignatura": "Sintaxis y semantica de Lenguajes",
       "carrera": "Ingenieria en sistemas de Informacion",
       "universidad_regional": "UTN Facultad Regional Resistencia",
-      "dirección": {
+      "direccion": {
         "calle": "French 414",
         "ciudad": "Resistencia",
-        "país": "argentina"
+        "pais": "argentina"
       },
       "alianza_equipo": "la organizacion del equipo se realiza segun la planificacion anual, junto al cronograma de clases. Alli se determinan los horarios de clases,temas a tratar cada clase y resultados esperados. La comunicacion entre integrantes se realiza mediante correo electronico, grupos de whatsapp",
       "integrantes": [
               {
                 "nombre": "Rodrigo Vigil",
                 "edad": 30.5,
-                "cargo": "Marketing",
+                "cargo": "profe",
                 "foto": "https://pbs.twimg.com/media/FCPNWd8XsAg5AkL.jpg",
                 "email": "rodrigo@chirigui.com.mx",
                 "habilidades": "receptor, bateador",

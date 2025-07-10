@@ -16,7 +16,7 @@ tokens = (
     'LLAVE_ABRE', 'LLAVE_CIERRA', 'CORCHETE_ABRE', 'CORCHETE_CIERRA', 'DOS_PUNTOS', 'COMA',
     'NUMBER', 'TRUE', 'FALSE', 'NULL', 'CONCLUSION', 'RESUMEN', 'CALLE', 'CIUDAD', 'PAIS', 'DATE',
     'NOMBRE', 'NOMBRE_EQUIPO', 'IDENTIDAD_EQUIPO', 'CARRERA', 'ASIGNATURA', 'UNIVERSIDAD_REGIONAL',
-    'ALIANZA_EQUIPO', 'INTEGRANTES', 'PROYECTOS', 'CARGO'
+    'ALIANZA_EQUIPO', 'INTEGRANTES', 'PROYECTOS', 'CARGO', 'INVALID_IDENTIFIER'
 )
 
 # Definición de tokens simples
@@ -37,87 +37,72 @@ def t_LINK(t):
     r'"https?://[^"\s]+"'
     return t
 
-
 def t_DATE(t):
     r'"\d{4}-\d{2}-\d{2}"'  # Fechas entre comillas
+    if not validar_fecha(t.value):
+        pass
     t.value = t.value.strip('"')  # Quitar las comillas
     return t
-
 
 def t_UNIVERSIDAD_REGIONAL(t):
     r'"universidad_regional"'
     return t
 
-
 def t_IDENTIDAD_EQUIPO(t):
     r'"identidad_equipo"'
     return t
-
 
 def t_NOMBRE_EQUIPO(t):
     r'"nombre_equipo"'
     return t
 
-
 def t_ALIANZA_EQUIPO(t):
     r'"alianza_equipo"'
     return t
-
 
 def t_FECHA_INICIO(t):
     r'"fecha_inicio"'
     return t
 
-
 def t_FECHA_FIN(t):
     r'"fecha_fin"'
     return t
-
 
 def t_FIRMA_DIGITAL(t):
     r'"firma_digital"'
     return t
 
-
 def t_VERSION(t):
     r'"version"'
     return t
-
 
 def t_DIRECCION(t):
     r'"direccion"'
     return t
 
-
 def t_INTEGRANTES(t):
     r'"integrantes"'
     return t
-
 
 def t_PROYECTOS(t):
     r'"proyectos"'
     return t
 
-
 def t_HABILIDADES(t):
     r'"habilidades"'
     return t
-
 
 def t_ASIGNATURA(t):
     r'"asignatura"'
     return t
 
-
 def t_CARRERA(t):
     r'"carrera"'
     return t
 
-
 def t_EQUIPOS(t):
     r'"equipos"'
     return t
-
 
 def t_CALLE(t):
     r'"calle"'
@@ -128,86 +113,78 @@ def t_CIUDAD(t):
     r'"ciudad"'
     return t
 
-
 def t_PAIS(t):
     r'"pais"'
     return t
-
 
 def t_TAREAS(t):
     r'"tareas"'
     return t
 
-
 def t_VIDEO(t):
     r'"video"'
     return t
-
 
 def t_CONCLUSION(t):
     r'"conclusion"'
     return t
 
-
 def t_RESUMEN(t):
     r'"resumen"'
     return t
-
 
 def t_ESTADO(t):
     r'"estado"'
     return t
 
-
 def t_NOMBRE(t):
     r'"nombre"'
     return t
-
 
 def t_EDAD(t):
     r'"edad"'
     return t
 
-
 def t_CARGO(t):
     r'"cargo"'
     return t
-
 
 def t_FOTO(t):
     r'"foto"'
     return t
 
-
 def t_EMAIL(t):
     r'"[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}"'
     return t
-
 
 def t_SALARIO(t):
     r'"salario"'
     return t
 
-
 def t_ACTIVO(t):
     r'"activo"'
     return t
 
+def t_INVALID_IDENTIFIER(t):
+    r'[a-zA-Z_][a-zA-Z0-9_]*'
+    # Esta función captura cualquier identificador que no sea una palabra clave válida
+    if t.value not in ['true', 'false', 'null']:
+        mostrar_error(f"❌ Identificador inválido detectado: '{t.value}' revisar el campo en el archivo JSON")
+        global has_errors
+        has_errors = True
+    return t
 
 def t_NUMBER(t):
     r'\d+(\.\d+)?'
     t.value = float(t.value) if '.' in t.value else int(t.value)
     return t
 
-
 def t_A_STRING(t):
     r'"[^"]*"'
     return t
 
-
 # Ignorar espacios y tabs
 t_ignore = ' \t'
-
 
 def t_newline(t):
     r'\n+'
@@ -215,9 +192,25 @@ def t_newline(t):
 
 
 def t_error(t):
-    print(f"Carácter ilegal: {t.value[0]}")
-    t.lexer.skip(1)
+    global has_errors
+    has_errors = True
 
+    # Verificar si es un identificador sin comillas
+    if t.value[0].isalpha() or t.value[0] == '_':
+        identifier = ''
+        i = 0
+        while i < len(t.value) and (t.value[i].isalnum() or t.value[i] == '_'):
+            identifier += t.value[i]
+            i += 1
+
+        if identifier not in ['true', 'false', 'null']:
+            mostrar_error(
+                f"❌ Identificador inválido detectado: '{identifier}' (los valores string deben estar entre comillas)")
+            t.lexer.skip(len(identifier))
+            return
+
+    mostrar_error(f"❌ Carácter ilegal: '{t.value[0]}'")
+    t.lexer.skip(1)
 
 # Construir el lexer
 lexer = lex.lex()
@@ -295,6 +288,66 @@ def validar_link(link_crudo):
     return True
 
 
+def validar_fecha(fecha_str):
+    """Valida si una fecha tiene formato válido y es una fecha real"""
+    global has_errors
+
+    # Quitar las comillas si las tiene
+    fecha = fecha_str.strip('"')
+
+    # Verificar formato básico
+    import re
+    patron_fecha = r'^\d{4}-\d{2}-\d{2}$'
+    if not re.match(patron_fecha, fecha):
+        mostrar_error(f"❌ Formato de fecha inválido: {fecha_str}")
+        has_errors = True
+        return False
+
+    # Separar año, mes y día
+    try:
+        partes = fecha.split('-')
+        año = int(partes[0])
+        mes = int(partes[1])
+        dia = int(partes[2])
+
+        # Validar rangos básicos
+        if mes < 1 or mes > 12:
+            mostrar_error(f"❌ Mes inválido en fecha: {fecha_str} (mes debe estar entre 1 y 12)")
+            has_errors = True
+            return False
+
+        if dia < 1 or dia > 31:
+            mostrar_error(f"❌ Día inválido en fecha: {fecha_str} (día debe estar entre 1 y 31)")
+            has_errors = True
+            return False
+
+        # Validar días según el mes
+        dias_por_mes = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+        # Verificar años bisiestos para febrero
+        if mes == 2:
+            if (año % 4 == 0 and año % 100 != 0) or (año % 400 == 0):
+                dias_por_mes[1] = 29  # Año bisiesto
+
+        if dia > dias_por_mes[mes - 1]:
+            mostrar_error(f"❌ Día inválido para el mes {mes} en fecha: {fecha_str}")
+            has_errors = True
+            return False
+
+        # Validar que el año sea razonable (entre 1900 y 2100)
+        if año < 1900 or año > 2100:
+            mostrar_error(f"❌ Año fuera del rango válido en fecha: {fecha_str}")
+            has_errors = True
+            return False
+
+    except ValueError:
+        mostrar_error(f"❌ Error al procesar la fecha: {fecha_str}")
+        has_errors = True
+        return False
+
+    return True
+
+
 def validar_numero_segun_contexto(clave, valor):
     """Valida números según el contexto del campo"""
     global has_errors
@@ -324,6 +377,26 @@ def validar_numero_segun_contexto(clave, valor):
                 return None
 
     return valor
+
+
+def validar_cargo(cargo):
+    """Valida si un cargo es válido según los cargos predefinidos"""
+    global has_errors
+
+    # Lista de cargos válidos
+    cargos_validos = {
+        "product analyst", "project manager", "ux designer", "marketing", "developer",
+        "devops", "db admin"
+    }
+
+    cargo_lower = cargo.lower().strip()
+
+    if cargo_lower not in cargos_validos:
+        mostrar_error(f"❌ Cargo inválido detectado: '{cargo}'")
+        has_errors = True
+        return False
+
+    return True
 
 # Reglas de gramática
 def p_json(p):
@@ -443,22 +516,35 @@ def p_valor_simple(p):
                     | TRUE
                     | FALSE
                     | NULL
-                    | DATE'''
+                    | DATE
+                    | INVALID_IDENTIFIER'''
+
     if p[1] == 'true':
         p[0] = True
     elif p[1] == 'false':
         p[0] = False
     elif p[1] == 'null':
         p[0] = None
-    elif isinstance(p[1], str) and p[1].startswith('"'):
+    elif hasattr(p[1], 'startswith') and p[1].startswith('"'):
         # Validar si es un link
         if p[1].startswith('"http'):
             if not validar_link(p[1]):
                 p[0] = None
                 return
+        # Validar si es una fecha
+        import re
+        if re.match(r'"\d{4}-\d{2}-\d{2}"', p[1]):
+            if not validar_fecha(p[1]):
+                p[0] = None
+                return
         p[0] = p[1].strip('"')
-    else:
-        p[0] = p[1]
+    else: #VALIDAR IDENTIFICADORES DE DATOS
+        if hasattr(p, 'slice') and p.slice[1].type == 'INVALID_IDENTIFIER':
+            global has_errors
+            has_errors = True
+            p[0] = None
+        else:
+            p[0] = p[1]
 
 
 def p_campos_direccion(p):
@@ -528,6 +614,11 @@ def p_campo_integrante(p):
             p[0] = {}
             return
         value = validated_value
+
+    # Validación de cargo si la clave es "cargo"
+    if key == "cargo" and isinstance(value, str):
+        if not validar_cargo(value):
+            value = None
 
     # Validación de email si la clave es "email"
     if key == "email":
@@ -614,6 +705,12 @@ def p_campo_proyecto(p):
                 has_errors = True
                 value = None
 
+        # Validar fechas específicas
+        if key in ["fecha_inicio", "fecha_fin"] and isinstance(value, str):
+            fecha_con_comillas = f'"{value}"'
+            if not validar_fecha(fecha_con_comillas):
+                value = None
+
         # Validación de estado si corresponde
         if key == "estado":
             estados_validos = {
@@ -621,6 +718,7 @@ def p_campo_proyecto(p):
             }
             if value.lower() not in estados_validos:
                 print(f"❌ Estado inválido detectado: {value}")
+                mostrar_error(f"❌ Estado inválido detectado: {value}")
                 has_errors = True
                 value = None
 
@@ -676,6 +774,12 @@ def p_campo_tarea(p):
             has_errors = True
             value = None
 
+    # Validar fechas específicas
+    if key in ["fecha_inicio", "fecha_fin"] and isinstance(value, str):
+        fecha_con_comillas = f'"{value}"'
+        if not validar_fecha(fecha_con_comillas):
+            value = None
+
     # Validar estado si la clave es "estado"
     if key == "estado":
         estados_validos = {
@@ -683,6 +787,7 @@ def p_campo_tarea(p):
         }
         if value.lower() not in estados_validos:
             print(f"❌ Estado inválido detectado: {value}")
+            mostrar_error(f"❌ Estado inválido detectado: {value}")
             has_errors = True
             value = None
     p[0] = {key: value}
@@ -733,11 +838,9 @@ def mostrar_error(mensaje):
     print(mensaje)
     try:
         analisislex.insert(tk.END, mensaje + "\n")
-        analisislex.see(tk.END)  # Scroll automático al final
+        analisislex.see(tk.END)
     except NameError:
-        # Si analisislex no está definido (ejecución por línea de comandos)
         pass
-
 
 # Construir el parser
 parser = yacc.yacc(debug=False)
@@ -994,12 +1097,12 @@ def seleccionarjson_con_html():
             else:
                 if not has_errors:
                     analisislex.insert(tk.END, "❌ Error en el análisis del JSON\n")
-                analisislex.insert(tk.END, "❌ No se pudo generar el HTML\n")
+                analisislex.insert(tk.END, "\n❌ No se pudo generar el HTML\n")
                 analisislex.see(tk.END)  # Scroll automático al final
 
         except Exception as e:
             analisislex.insert(tk.END, f"❌ Error: {e}\n")
-            analisislex.insert(tk.END, "❌ No se pudo procesar el archivo\n")
+            analisislex.insert(tk.END, "\n❌ No se pudo procesar el archivo\n")
             analisislex.see(tk.END)  # Scroll automático al final
 
         # Alimento el lexer con el contenido extraído (solo si no hay errores críticos)
